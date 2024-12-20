@@ -1,0 +1,188 @@
+# 9bet Next.js Web Application Requirements
+
+## User Stories
+
+### Authentication and User Management
+- As a user, I want to securely log in and out of my account
+- As a user, I want to see my username and balance displayed when logged in
+- As a user, I want to change my password
+- As an admin/agent, I want access to additional management features when logged in
+- As an admin, I want to create and manage user and agent accounts
+- As an agent, I want to create and manage user accounts
+
+### Navigation and Responsive Design
+- As a user, I want to easily navigate between different sections of the website
+- As a user, I want the website to be fully responsive and work well on mobile devices
+- As a user, I want a collapsible sidebar for mobile views
+
+### Multilingual Support
+- As a user, I want to change the language of the website (initially French and English)
+- As a user, I want to see the currently selected language
+
+### Game Integration
+- As a user, I want to access and play two main games: Blackjack (21) and Tunisian Noufi (9)
+- As a user, I want to view available game tables and join them
+- As a user, I want to place bets using my account balance
+- As a user, I want to see game results and have my balance updated accordingly
+
+### User Dashboard
+- As a user, I want to view my current balance and recent activity
+- As an admin, I want to see overall platform statistics (total users, active users, financial overview)
+- As an agent, I want to view user management options and financial data for my users
+
+### User and Transaction Management
+- As an admin/agent, I want to list, search, and filter users
+- As an admin, I want to delete user accounts
+- As an admin/agent, I want to view, filter, and generate reports for financial transactions
+- As an admin/agent, I want to perform balance transfers between users
+- As a user, I want to view my transfer history
+
+### UI Components and Styling
+- Implement a clean, modern UI with a gradient from dark blue to darker blue as the main color scheme
+- Use reusable UI components for consistency across the application
+- Integrate shadcn/ui components and Lucide React for icons
+
+### Error Handling and Notifications
+- Implement error handling for API requests and user actions
+- Use a toast notification system for success and error messages
+
+### Performance and Accessibility
+- Optimize component rendering to minimize unnecessary re-renders
+- Implement lazy loading for components and routes where appropriate
+- Ensure the application is accessible, following WCAG guidelines
+- Implement proper ARIA attributes and keyboard navigation
+
+### Footer Information
+- Provide quick links to important sections (Home, Games, About Us, Contact)
+- Include legal information (Terms of Service, Privacy Policy, Responsible Gaming)
+- Display contact information for support
+
+## Technical Requirements
+
+- Use Next.js as the main framework for the application
+- Use React hooks for state management (useState, useEffect, useContext)
+- Implement form validation for user inputs
+- Use Tailwind CSS for styling components
+- Ensure proper error handling and display user-friendly error messages
+- Implement client-side validation for user inputs
+- Ensure sensitive data is not exposed in the frontend
+
+## Testing and Documentation
+- Write unit tests for critical components and functions
+- Implement integration tests for key user flows
+- Provide inline documentation for complex functions and components
+- Create a user guide or help section within the application
+
+## Future Enhancements
+- Add real-time updates for live betting
+- Integrate a backend API for handling user data and game information
+- Implement a more robust state management solution (e.g., Redux or Zustand) for complex state handling
+
+Blackjack Game Component:
+   - Implement a fully functional Blackjack game with the following features:
+     * Deal cards to player and dealer
+     * Allow player to hit, stand, double down, and split
+     * Implement dealer's play according to standard rules (hit on 16, stand on 17)
+     * Calculate hand values correctly, including special handling for Aces
+     * Detect and handle Blackjack (natural 21) for both player and dealer
+     * Allow multiple hands per game (up to 3)
+     * Implement betting system with chip selection
+     * Allow players to place, clear, and undo bets
+     * Automatically move to next hand or dealer's turn when player reaches 21 or busts
+     * Display game results and update balance accordingly
+     * Show concise messages for each hand's outcome (Win, Lose, Push, Blackjack, Bust)
+     * Implement correct payout ratios (3:2 for Blackjack, 1:1 for regular wins)
+     * Integrate with user balance system for betting and payouts
+     * Implement game reset functionality for starting a new round
+     * Display player's current balance and total bet amount
+     * Implement responsive design for the game interface
+     * Animate card dealing and hand resolution for better user experience
+     * Allow independent play of split hands
+     * Disable betting options during gameplay
+     * Show/hide action buttons (Hit, Stand, Double, Split) based on game state and hand context
+     * Implement proper handling of multiple hands, including splits
+     * Display dealer's hidden card only at the end of the round
+     * Provide clear visual indication of the current active hand
+     * Ensure correct balance updates for all game outcomes
+     * Implement a single chip selection area for all hands
+     * Display a summary message with total winnings at the end of each round
+     * Ensure smooth transitions between different game states (betting, playing, dealer's turn, game over)
+     * Implement a "Bet All" feature to place the same bet on all hands
+     * Add a "Clear All" button to remove all bets at once
+     * Include a "Repeat" button to quickly place the same bets as the previous round
+     * Display the dealer's score as a range (e.g., "Score: 10+?") when the second card is hidden
+     * Show the dealer's status (Blackjack, Bust) at the end of the round
+     * Implement a chip stack UI for bet selection with different chip denominations
+     * Add visual feedback for the currently selected chip value
+     * Ensure proper handling of insufficient balance for bets and actions
+     * Implement split count tracking to limit the number of splits per hand
+     * Add animations for card dealing, bet placement, and chip selection
+     * Ensure compatibility with the global user context for balance management
+     * Implement proper error handling and user feedback for invalid actions
+     * Optimize performance for smooth gameplay, especially with animations
+
+Noufi Game Component:
+   - Implement a fully functional Tunisian Noufi game with the following features:
+     * Create and shuffle a 40-card deck (1-10 in four suits)
+     * Deal 3 cards to each player (up to 4 players) and the dealer
+     * Implement betting system with chip selection (1, 5, 10, 25, 100 chips)
+     * Allow players to place, clear, and undo bets individually
+     * Implement "Bet All" feature to place bets on all hands simultaneously
+     * Add "Clear All" functionality to remove all bets at once
+     * Calculate hand values correctly, with special handling for Hchich cards (8, 9, 10)
+     * Implement Noufi scoring rules (9 is the best hand, Hchich for 8, 9, 10)
+     * Allow players to reveal their hands one by one
+     * Determine the winner based on the highest score
+     * Handle ties and multiple winners
+     * Display game results and update balance accordingly
+     * Show concise messages for game outcomes (Win, Lose, Push)
+     * Implement correct payout ratios (1:1 for wins)
+     * Integrate with user balance system for betting and payouts
+     * Implement game reset functionality for starting a new round
+     * Include a "Repeat" button to quickly place the same bets as the previous round
+     * Display player's current balance and total bet amount
+     * Implement responsive design for the game interface
+     * Animate card dealing for better user experience
+     * Disable betting options during gameplay
+     * Show/hide action buttons based on game state
+     * Display dealer's hand with the option to reveal
+     * Provide clear visual indication of the current active player
+     * Ensure correct balance updates for all game outcomes
+     * Implement a single chip selection area for all players
+     * Display a summary message at the end of each round
+     * Ensure smooth transitions between different game states (betting, playing, dealer's turn, game over)
+     * Implement a "Deal" button to start the round after bets are placed
+     * Add a "Show" button for players to reveal their hands
+     * Include a "New Round" button to reset the game after each round
+     * Implement a chip stack UI for bet selection with different chip denominations
+     * Add visual feedback for the currently selected chip value
+     * Ensure proper handling of insufficient balance for bets
+     * Add animations for card dealing and bet placement
+     * Ensure compatibility with the global user context for balance management
+     * Implement proper error handling and user feedback for invalid actions
+     * Optimize performance for smooth gameplay, especially with animations
+     * Display the score for each hand, taking into account the Noufi scoring rules (Hchich, Noufi)
+     * Implement the rule where 9 (Noufi) is the best possible hand
+     * Display cards face-down initially, revealing only when the player chooses to show
+     * Implement a turn-based system where players reveal their hands in order
+     * Add visual distinction for the current active player
+     * Implement a dealer hand that's revealed after all players have shown their hands
+     * Display the final game state with win/lose/push status for each player
+     * Ensure the game logic follows the specific rules of Tunisian Noufi
+     * Display 'J', 'Q', 'K' for 8, 9, 10 cards respectively, while maintaining their Noufi values
+     * Implement a reshuffle of the deck before each new round
+     * Add a "Hchich" display for hands consisting entirely of 8, 9, and 10
+     * Display "Noufi" for hands with a score of 9
+     * Implement a turn-based reveal system where players show their hands one at a time
+     * Add a dealer reveal step after all players have shown their hands
+     * Implement a scoring system that correctly handles Hchich hands
+     * Ensure proper handling of the game state transitions (betting -> playing -> dealer turn -> game over)
+     * Add visual feedback for the current active player during the reveal phase
+     * Implement a "Show" button for each player to reveal their hand during their turn
+     * Ensure the dealer's hand is only fully revealed at the end of the round
+     * Add a clear display of each player's bet amount and status throughout the game
+     * Implement proper error handling for edge cases (e.g., insufficient balance, invalid bets)
+     * Optimize the game flow to handle multiple players efficiently
+     * Ensure all game logic and rules are consistently applied across all player actions and game states
+
+Note: This requirements list should be reviewed and updated regularly as the project evolves. Coordination with backend development will be crucial to ensure all frontend features are properly supported by the API.
